@@ -1,8 +1,11 @@
 """Seed file to make sample data for db."""
 
 from models import db
-from app import app
+from app import app, create_app
+
+app = create_app()
 
 # Create all tables
-db.drop_all()
-db.create_all()
+with app.app_context():
+    db.drop_all()
+    db.create_all()
