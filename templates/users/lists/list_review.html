@@ -1,0 +1,71 @@
+{% extends 'list_base.html' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+
+
+  <h1 class="mt-3">reviews</h1>
+  {% for review in user.reviews|sort(reverse=true, attribute="date_added") %}
+
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-12 col-lg-3">
+        <div class="m-3">
+          <a href="/books/{{ review.book.volumeId }}">
+          <img src="{{ review.book.thumbnail }}" class="card-img" alt="book cover" style="width: 150px; height: 200px;">
+        </a>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7 p-2">
+        <div class="card-body">
+
+          <h5>
+              <div id="star_div" class="star-rating d-inline-block">
+                {% for i in range(0, review.rating) %}
+                <i class="fa-solid fa-star"></i>
+                {% endfor %}
+
+                {% for i in range(0, 5 - review.rating) %}
+                <i class="fa-regular fa-star"></i>
+                {% endfor %}
+              </div>
+
+            {% if g.user == review.user%}
+
+              <form action="/users/{{ user.id }}/reviews/{{ review.id }}/delete" method="POST"
+                class="delete-form m-1 d-inline-block">
+                <button class="btn btn-sm btn-secondary">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </form>
+
+  
+
+              <a href="/users/{{ user.id }}/reviews/{{ review.id }}/update" class="text-muted edit_profile" role="button">
+                <button class="btn btn-sm btn-secondary m-1">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </a>
+
+            {% endif %}
+
+          </h5>
+
+          <p class="card-text">{{ review.review }}</p>
+          <p class="card-text"><small class="text-muted">Reviewed on:
+              {{ review.date_added.strftime('%B %d %Y') }}</small></p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-2">
+        <div class="p-3 text-right">
+         
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+  {% endfor %}
+
+{% endblock %}
