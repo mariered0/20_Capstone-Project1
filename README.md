@@ -1,4 +1,4 @@
-# Capstone-project 1: Booklyn
+# Application: Booklyn
 
 
 ## OVERVIEW
@@ -6,7 +6,7 @@ Booklyn is a digital book shelf where users can label books they want to read, a
 
 ![landing_page](https://github.com/mariered0/29_Capstone-project1/blob/main/Documentation/Images_doc/landing_page.png?raw=true)
 
-App: [Booklyn](https://booklyn-app.herokuapp.com/)</br>
+App: [Booklyn](https://booklyn.onrender.com/)</br>
 Proposal of this project: [Booklyn_Proposal.pdf](https://github.com/mariered0/29_Capstone-project1/blob/main/Documentation/Capstone1_proposal.pdf)
 
 
